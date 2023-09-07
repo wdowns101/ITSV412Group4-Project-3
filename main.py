@@ -1,3 +1,5 @@
+import os
+import os.path
 import requests
 
 downloadUrl = 'https://s3.amazonaws.com/tcmg476/http_access_log'
