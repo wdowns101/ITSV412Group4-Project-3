@@ -1,4 +1,3 @@
-import os
 import requests
 
 # Define the URL of the file to download
