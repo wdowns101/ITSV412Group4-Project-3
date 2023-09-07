@@ -8,7 +8,8 @@ check_file = os.path.isfile(path)
 
 print(check_file)
 
-while (check_file == False):
+while (check_file != True):
+
     print("Downloading the file!")
     downloadUrl = 'https://s3.amazonaws.com/tcmg476/http_access_log'
 
@@ -37,6 +38,8 @@ while (check_file == False):
             print(e)
             return None
         print("File has been downloaded!")
-    continue 
+    check_file = os.path.isfile(path)
+    print(check_file)
+
 
 print("you have the file!")
