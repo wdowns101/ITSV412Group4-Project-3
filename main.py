@@ -6,11 +6,12 @@ path = './http_access_log.txt'
 
 check_file = os.path.isfile(path)
 
-print(check_file)
+if (check_file == False):
+    print("You do not have the file.")
 
 while (check_file != True):
 
-    print("Downloading the file!")
+    print("Downloading the file...")
     downloadUrl = 'https://s3.amazonaws.com/tcmg476/http_access_log'
 
     req = requests.get(downloadUrl)
@@ -42,4 +43,5 @@ while (check_file != True):
     print(check_file)
 
 
-print("you have the file!")
+print("You have the file!")
+print("Analyzing data...")
