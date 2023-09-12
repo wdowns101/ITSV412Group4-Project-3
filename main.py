@@ -35,7 +35,7 @@ def check_past_month(month, year, file_path):
         line_number = 0
         for line in file:
             line_number = line_number + 1
-            if f"{six_months_agao_month_name}/{year}" in line:
+            if f"{six_months_ago_month_name}/{year}" in line:
                 break
     return six_months_ago_month, year, line_number
 
