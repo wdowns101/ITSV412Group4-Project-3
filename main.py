@@ -16,6 +16,12 @@ def read_last_line():
         last_line = last_line.strip()
     else:
         print('File is empty')
+    date_str = last_line.split('[')[-1].split(']')[0]
+    date_obj = datetime.striptime(date_sr,'%d/%b/%Y:%H:%M:%S %z)
+    month = date_obj.strftime('%b')
+    year = date_obj.strftime(%Y)
+    month_number = month_mapping[month]
+    return month_number, year
     
 
 #def check_past_month():
