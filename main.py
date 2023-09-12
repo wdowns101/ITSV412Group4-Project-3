@@ -31,6 +31,7 @@ def check_past_month(month, year, file_path):
         if month_number == past_six_months:
             six_months_ago_month_name = month_name
             break
+            
     with open(file_path, 'r') as file:
         line_number = 0
         for line in file:
@@ -47,7 +48,7 @@ def check_total_requests(file_path):
     return line_count
 
 if __name__ == "__main__":
-   check_file = os.path.isfile(path)       #Check if the log file exists or already been downloaded
+    check_file = os.path.isfile(path)       #Check if the log file exists or already been downloaded
     if (check_file == False):              #If the file doesn't exists, download it and store it in disk space
         print("You do not have the file.")
         print("Downloading the file...")
