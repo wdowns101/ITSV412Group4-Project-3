@@ -60,8 +60,8 @@ if __name__ == "__main__":
                     textfile.write(chunk)
     
     else:                                   #Else, we already have the file and ready to anaylze
-        Print("You have the file!")
-        Print("Analyzing data....")
+        print("You have the file!")
+        print("Analyzing data....")
 
 last_month, last_year = read_last_line(path)                                                                                    #After downloading, read the file and get the most recent month
 six_months_ago_month, six_months_ago_year, six_months_requests = check_past_month(last_month, last_year, path)                 #Get which month is the past 6 months and whether it was in the last year or not and get the first line that the 6 month ago started
