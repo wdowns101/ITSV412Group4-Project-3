@@ -5,23 +5,23 @@ from datetime import datetime
 
 path = './http_access_log.txt'
 
-month_mapping = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr' : 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}     #Month mapping to check number of month and to calculate year
+month_mapping = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}     #Month mapping to check number of month and to calculate year
 
-def read_last_line(): #Read the last line of the file
+def read_last_line(file_path): #Read the last line of the file
     with open(file_path, 'r') as file:
         for line in file:
-            last_line = line 
+            last_line = line  # Store the current line in the variable
     if last_line is not None:
         last_line = last_line.strip()
     else:
         print('File is empty')
     date_str = last_line.split('[')[-1].split(']')[0]
-    date_obj = datetime.striptime(date_sr, '%d/%b/%Y:%H:%M:%S %z')
+    date_obj = datetime.strptime(date_str, '%d/%b/%Y:%H:%M:%S %z')
     month = date_obj.strftime('%b')
     year = date_obj.strftime('%Y')
     month_number = month_mapping[month]
     return month_number, year
-    
+
 def check_past_month(month, year, file_path):
     past_six_months = month - 5
     if past_six_months <= 0:              #Handle a case where it could go to last year
@@ -37,9 +37,9 @@ def check_past_month(month, year, file_path):
             line_number = line_number + 1
             if f"{six_months_ago_month_name}/{year}" in line:
                 break
-    return six_months_ago_month, year, line_number
+    return six_months_ago_month_name, year, line_number
 
-def check_total_requests(): #Calculate total request
+def check_total_requests(file_path):
     line_count = 0
     with open(file_path, 'r') as file:
         for line in file:
@@ -47,7 +47,7 @@ def check_total_requests(): #Calculate total request
     return line_count
 
 if __name__ == "__main__":
-    check_file = os.path.isfile(path)      #Check if the log file exists or already been downloaded
+   check_file = os.path.isfile(path)       #Check if the log file exists or already been downloaded
     if (check_file == False):              #If the file doesn't exists, download it and store it in disk space
         print("You do not have the file.")
         print("Downloading the file...")
@@ -59,14 +59,15 @@ if __name__ == "__main__":
                 if chunk:
                     textfile.write(chunk)
     
-    else:                                   #Else, we already have the file and ready to anaylze
+    else:                                   #Else, we already have the file and ready to analyze
         print("You have the file!")
-        print("Analyzing data....")
+        print("Analyzing data...")
 
-last_month, last_year = read_last_line(path)                                                                                    #After downloading, read the file and get the most recent month
-six_months_ago_month, six_months_ago_year, six_months_requests = check_past_month(last_month, last_year, path)                 #Get which month is the past 6 months and whether it was in the last year or not and get the first line that the 6 month ago started
-total_request = check_total_requests(path)                                                                                      #Total number of lines in the log should give the total requests in the entire period
-six_months_total_requests = total_requests - six_months_requests    #Subtract the first line number of desired month from total request
-print(f"Total requests in the time period in the log: {total_requests}")
-print(f"Total requests in the past 6 months: {six_months_total_requests}")
-    
+    last_month, last_year = read_last_line(path)                                                                                  #After downloading, read the file and get the most recent month
+    six_months_ago_month, six_months_ago_year, six_months_requests = check_past_month(last_month, last_year, path)               #Get which month is the past 6 months and whether it was in the last year or not and get the first line that the 6 month ago started
+    total_requests = check_total_requests(path)                                                                                    #Total number of lines in the log should give the total requests in the entire period
+    six_months_total_requests = total_requests - six_months_requests     #Subtract the first line number of desired month from total request
+    print(f"Total requests in the time period in the log: {total_requests}")
+    print(f"Total requests in the past 6 months: {six_months_total_requests}")
+
+
