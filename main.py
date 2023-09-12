@@ -16,9 +16,9 @@ def read_last_line(): #Read the last line of the file
     else:
         print('File is empty')
     date_str = last_line.split('[')[-1].split(']')[0]
-    date_obj = datetime.striptime(date_sr, %d/%b/%Y:%H:%M:%S %z')
+    date_obj = datetime.striptime(date_sr, '%d/%b/%Y:%H:%M:%S %z')
     month = date_obj.strftime('%b')
-    year = date_obj.strftime(%Y)
+    year = date_obj.strftime('%Y')
     month_number = month_mapping[month]
     return month_number, year
     
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     
     else:                                   #Else, we already have the file and ready to anaylze
         Print("You have the file!")
-        Print("Analyzing data.....)
+        Print("Analyzing data....")
 
 last_month, last_year = read_last_line(path)                                                                                    #After downloading, read the file and get the most recent month
 six_months_ago_month, six_months_ago_year, six_months_requests = check_past_month(last_month, last_year, path)                 #Get which month is the past 6 months and whether it was in the last year or not and get the first line that the 6 month ago started
