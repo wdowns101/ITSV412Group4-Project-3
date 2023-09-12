@@ -39,8 +39,12 @@ def check_past_month(month, year, file_path):
                 break
     return six_months_ago_month, year, line_number
 
-#def check_total_requests():
-#Calculate total request
+def check_total_requests(): #Calculate total request
+    line_count = 0
+    with open(file_path, 'r') as file;
+        for line in file:
+            line_count += 1
+    return line_count
 
 if __name__ == "__main__":
     #Check if the log file exists or already been downloaded
