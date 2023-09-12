@@ -6,10 +6,22 @@ from datetime import datetime
 path = './http_access_log.txt'
 #Month mapping to check number of month and to calculate year
 month_mapping = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr' : 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}
-#Read the last line of the file
 
+#Read the last line of the file
+def read_last_line():
+    with open(file_path, 'r') as file;
+        for line in file:
+            last_line = line 
+    if last_line is not None:
+        last_line = last_line.strip()
+    else:
+        print('File is empty')
+        
+
+#def check_past_month():
 #Handle a case where it could go to last year
 
+#def check_total_requests():
 #Calculate total request
 
 if __name__ == "__main__":
