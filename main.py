@@ -4,6 +4,13 @@ import requests
 from datetime import datetime
 
 path = './http_access_log.txt'
+#Month mapping to check number of month and to calculate year
+
+#Read the last line of the file
+
+#Handle a case where it could go to last year
+
+#Calculate total request
 
 if __name__ == "__main__":
     #Check if the log file exists or already been downloaded
