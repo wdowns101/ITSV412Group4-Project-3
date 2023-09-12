@@ -9,14 +9,14 @@ month_mapping = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr' : 4, 'May': 5, 'Jun': 6, 'J
 
 #Read the last line of the file
 def read_last_line():
-    with open(file_path, 'r') as file;
+    with open(file_path, 'r') as file:
         for line in file:
             last_line = line 
     if last_line is not None:
         last_line = last_line.strip()
     else:
         print('File is empty')
-        
+    
 
 #def check_past_month():
 #Handle a case where it could go to last year
