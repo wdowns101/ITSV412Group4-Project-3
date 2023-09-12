@@ -2,6 +2,7 @@ import os
 import os.path
 import requests
 from datetime import datetime
+from tqdm import tqdm 
 
 path = './http_access_log.txt'
 
@@ -48,18 +49,27 @@ def check_total_requests(file_path):
     return line_count
 
 if __name__ == "__main__":
-    check_file = os.path.isfile(path)       #Check if the log file exists or already been downloaded
-    if (check_file == False):              #If the file doesn't exists, download it and store it in disk space
+    check_file = os.path.isfile(path)
+    if not check_file:
         print("You do not have the file.")
         print("Downloading the file...")
+
         downloadUrl = 'https://s3.amazonaws.com/tcmg476/http_access_log'
-        req = requests.get(downloadUrl)
+        req = requests.get(downloadUrl, stream=True)  # Use stream=True to download in chunks
         filename = "http_access_log.txt"
+
+        total_size = int(req.headers.get('content-length', 0))
+
+        progress_bar = tqdm(total=total_size, unit='B', unit_scale=True)
+
         with open(filename, 'wb') as textfile:
             for chunk in req.iter_content(chunk_size=8192):
                 if chunk:
                     textfile.write(chunk)
-    
+                    progress_bar.update(len(chunk))  
+
+        progress_bar.close()
+        
     else:                                   #Else, we already have the file and ready to analyze
         print("You have the file!")
         print("Analyzing data...")
@@ -70,5 +80,4 @@ if __name__ == "__main__":
     six_months_total_requests = total_requests - six_months_requests     #Subtract the first line number of desired month from total request
     print(f"Total requests in the time period in the log: {total_requests}")
     print(f"Total requests in the past 6 months: {six_months_total_requests}")
-
 
