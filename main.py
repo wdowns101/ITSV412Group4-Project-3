@@ -7,6 +7,16 @@ from urllib.request import urlretrieve
 URL_PATH = 'https://s3.amazonaws.com/tcmg476/http_access_log'
 LOCAL_FILE = 'local_copy.log'
 
+local_file, headers = urlretrieve(URL_PATH, LOCAL_FILE)
+
+#find path to file
+from pathlib import Path
+print(Path.cwd())
+
+FILE_NAME = 'path/to/file'
+
+fh = open(FILE_NAME)
+
 path = './http_access_log.txt'
 
 check_file = os.path.isfile(path)
