@@ -69,6 +69,7 @@ if __name__ == "__main__":
                     progress_bar.update(len(chunk))  
 
         progress_bar.close()
+        print("Analyzing data...")
         
     else:                                   #Else, we already have the file and ready to analyze
         print("You have the file!")
