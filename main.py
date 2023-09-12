@@ -5,7 +5,7 @@ from datetime import datetime
 
 path = './http_access_log.txt'
 
-month_mapping = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr' : 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12} #Month mapping to check number of month and to calculate year
+month_mapping = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr' : 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}     #Month mapping to check number of month and to calculate year
 
 def read_last_line(): #Read the last line of the file
     with open(file_path, 'r') as file:
@@ -24,7 +24,7 @@ def read_last_line(): #Read the last line of the file
     
 def check_past_month(month, year, file_path):
     past_six_months = month - 5
-    if past_six_months <= 0:   #Handle a case where it could go to last year
+    if past_six_months <= 0:              #Handle a case where it could go to last year
         past_six_months += 12
         year = year - 1
     for month_name, month_number in month_mapping.items():
@@ -47,10 +47,8 @@ def check_total_requests(): #Calculate total request
     return line_count
 
 if __name__ == "__main__":
-    #Check if the log file exists or already been downloaded
-    check_file = os.path.isfile(path)
-    #If the file doesn't exists, download it and store it in disk space
-    if (check_file == False):
+    check_file = os.path.isfile(path)      #Check if the log file exists or already been downloaded
+    if (check_file == False):              #If the file doesn't exists, download it and store it in disk space
         print("You do not have the file.")
         print("Downloading the file...")
         downloadUrl = 'https://s3.amazonaws.com/tcmg476/http_access_log'
@@ -60,8 +58,8 @@ if __name__ == "__main__":
             for chunk in req.iter_content(chunk_size=8192):
                 if chunk:
                     textfile.write(chunk)
-    #Else, we already have the file and ready to anaylze
-    else:
+    
+    else:                                   #Else, we already have the file and ready to anaylze
         Print("You have the file!")
         Print("Analyzing data.....)
 
