@@ -64,3 +64,9 @@ if __name__ == "__main__":
     else:
         Print("You have the file!")
         Print("Analyzing data.....)
+
+    #After downloading, read the file and get the most recent month
+    #Get which month is the past 6 month and whether it was in the last year or not and get the first line that the 6 month ago started
+    #Total number of lines in the log should give the total requests in the entire period
+    #Subtract the frist line number of desired month from total request
+    
