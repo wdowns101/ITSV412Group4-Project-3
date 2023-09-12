@@ -24,8 +24,23 @@ def read_last_line():
     return month_number, year
     
 
-#def check_past_month():
+def check_past_month(month, year, file_path):
+    past_six_months = month - 5
 #Handle a case where it could go to last year
+    if past_six_months <= 0:
+        past_six_months += 12
+        year = year - 1
+    for month_name, month_number in month_mapping.items():
+        if month_number == past_six_months:
+            six_months_ago_month_name = month_name
+            break
+    with open(file_path, 'r') as file:
+        line_number = 0
+        for line in file:
+            line_number = line_number + 1
+            if f"{six_months_agao_month_name}/{year}" in line:
+                break
+    return six_months_ago_month, year, line_number
 
 #def check_total_requests():
 #Calculate total request
