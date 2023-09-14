@@ -32,5 +32,5 @@ criteria = ["404","403"]
 # Filter and count lines based on the predefined criterias
 filtered_lines = [line for line in li if any(keyword in line for keyword in criteria)]
 failed_lines = len(filtered_lines)
-percent_failed = (failed_lines/len(li))*100
+percent_failed = round((failed_lines/len(li))*100,2)
 print(f"The percentage of failed requests is: {percent_failed}" + "%")
