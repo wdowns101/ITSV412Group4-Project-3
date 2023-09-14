@@ -14,3 +14,12 @@ with open(path, 'r') as log_file:
         if len(parts) >= 10:
             # Extract the date from the log entry 
             date_str = parts[3][1:12]  #
+
+ if date_str in weekly_request_counts:
+                weekly_request_counts[date_str] += 1
+            else:
+                weekly_request_counts[date_str] = 1
+
+# Print the weekly request counts
+for date, count in sorted(weekly_request_counts.items()):
+    print(f'{date}: {count} requests')
