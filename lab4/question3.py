@@ -33,4 +33,4 @@ criteria = ["404","403"]
 filtered_lines = [line for line in li if any(keyword in line for keyword in criteria)]
 total_lines = len(filtered_lines)
 percent_failed = total_lines/len(filtered_lines)
-print(f"The percentage of failed requests is: {percent_failed}")
+print(f"The percentage of failed requests is: {percent_failed}" + "%")
