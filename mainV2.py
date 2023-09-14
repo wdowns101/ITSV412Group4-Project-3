@@ -37,4 +37,3 @@ print(f"The number of requests made in the last 6 months: {total_lines}")
 total_line = len(li)
 print(f"The number of total requests in the log is: {total_line}")
 
-
