@@ -12,9 +12,9 @@ with open(path, 'r') as log_file:
     for line in log_file:
         # Split the log entry by space
         parts = line.split()
-        if len(parts) >= 4:
-            # Extract the date from the log entry (assuming it's in the fourth position)
-            date_str = parts[3][1:12]  # Assuming the date format is [dd/Mon/yyyy:HH]
+        if len(parts) >= 6:
+            # Extract the date from the log entry 
+            date_str = parts[3][1:12]  #
            
 # Increment the request count for the extracted date
             if date_str in daily_request_counts:
