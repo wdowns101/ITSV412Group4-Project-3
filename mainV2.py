@@ -29,16 +29,21 @@ with open('http_access_log.txt','r') as file:
     
 # Define the criteria
 criteria0 = ["May/1995", "Jun/1995", "Jul/1995", "Aug/1995", "Sep/1995", "Oct/1995"]
-criteria4 = ["404","403"]
+criteria3 = ["404","403"]
+criteria4 = ["304","303"]
 
 # Python0 Filter and count lines based on the predefined criterias 
 filtered_lines = [line for line in li if any(keyword in line for keyword in criteria0)]
 total_lines = len(filtered_lines)
 
 # Project404 Filter and count lines based on the predefined criterias 
-filtered_lines = [line for line in li if any(keyword in line for keyword in criteria4)]
+filtered_lines = [line for line in li if any(keyword in line for keyword in criteria3)]
 failed_lines = len(filtered_lines)
 percent_failed = round((failed_lines/len(li))*100,2)
+
+filtered_lines = [line for line in li if any(keyword in line for keyword in criteria4)]
+redirected_lines = len(filtered_lines)
+percent_redirected = round((redirected_lines/len(li))*100,2)
 
 
 
@@ -47,5 +52,7 @@ print(f"The number of requests made in the last 6 months: {total_lines}")
 total_line = len(li)
 print(f"The number of total requests in the log is: {total_line}")
 
-
 print(f"The percentage of failed requests is: {percent_failed}" + "%")
+
+print(f"The percentage of redirected requests is: {percent_redirected}" + "%")
+
