@@ -1,11 +1,18 @@
-#How many requests were made on a week-by-week basis? Per month?
+import os
+import os.path
+from urllib.request import  urlretrieve #use url.lib
 from datetime import datetime
 
-'''REMOTE_URL = 'https://s3.amazonaws.com/tcmg476/http_access_log'
-local_file
-'''
 path = './http_access_log.txt'
 
+check_file = os.path.isfile(path) #this is a boolean statement
+
+if (check_file == False):
+
+    print("You do not have the file.") #add fetching file
+    print("Downloading the file...")
+
+  
 # Initialize a dictionary to store the weekly request counts
 weekly_request_counts = {}
 
