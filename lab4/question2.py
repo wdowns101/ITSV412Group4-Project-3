@@ -27,7 +27,7 @@ print("Analyzing data...")
 with open('http_access_log.txt','r') as file:
     li = file.readlines()
 
-# Initialize a dictionary to store the weekly request counts
+# Store weekly request counts
 weekly_request_counts = {}
 
 # Open the log file and read its contents line by line
