@@ -24,11 +24,6 @@ print("You have the file!")
 print("Analyzing data...")
 with open('http_access_log.txt','r') as file:
     li = file.readlines()
-    
-# Define the criteria
-criteria0 = ["May/1995", "Jun/1995", "Jul/1995", "Aug/1995", "Sep/1995", "Oct/1995"]
-criteria3 = ["404","403"]
-criteria4 = ["304","303"]
 
 file_counts = {}
 for line in li:
