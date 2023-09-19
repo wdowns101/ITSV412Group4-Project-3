@@ -1,3 +1,4 @@
+#How many requests were made on a week-by-week basis?
 import os
 import os.path
 from urllib.request import  urlretrieve #use url.lib
