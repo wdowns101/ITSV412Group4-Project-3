@@ -25,6 +25,14 @@ print("You have the file!")
 print("Analyzing data...")
 with open('http_access_log.txt','r') as file:
     li = file.readlines()
+    
+criteria0 = ["May/1995", "Jun/1995", "Jul/1995", "Aug/1995", "Sep/1995", "Oct/1995"]
 
+filtered_lines = [line for line in li if any(keyword in line for keyword in criteria0)]
+total_lines = len(filtered_lines)
 
+print(f"The number of requests made in the last 6 months: {total_lines}")
+
+total_line = len(li)
+print(f"The number of total requests in the log is: {total_line}")
 
